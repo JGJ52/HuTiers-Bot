@@ -1,27 +1,29 @@
 package hu.jgj52.hutiersbot.Buttons;
 
+import hu.jgj52.hutiersbot.Commands.UpdateNamesCommand;
 import hu.jgj52.hutiersbot.Types.Button;
 import net.dv8tion.jda.api.components.buttons.ButtonStyle;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 
-public class CicaButton extends Button {
+public class StopNameUpdatingButton extends Button {
     @Override
     public String getCustomId() {
-        return "cica";
+        return "stopnameupdating";
     }
 
     @Override
     public String getLabel() {
-        return "CICABGOMB";
+        return "Stop";
     }
 
     @Override
     public ButtonStyle getStyle() {
-        return ButtonStyle.PRIMARY;
+        return ButtonStyle.DANGER;
     }
 
     @Override
     public void execute(ButtonInteractionEvent event) {
-        event.reply("tenyelg cica").queue();
+        UpdateNamesCommand.stop = true;
+        event.reply("Névfrissítés abbahagyva.").setEphemeral(true).queue();
     }
 }

@@ -1,12 +1,10 @@
 package hu.jgj52.hutiersbot;
 
-import hu.jgj52.hutiersbot.Buttons.CicaButton;
-import hu.jgj52.hutiersbot.Commands.CicaSlashCommand;
-import hu.jgj52.hutiersbot.Listeners.ButtonListener;
-import hu.jgj52.hutiersbot.Listeners.CommandListener;
-import hu.jgj52.hutiersbot.Types.Button;
-import hu.jgj52.hutiersbot.Types.SlashCommand;
-import hu.jgj52.hutiersbot.Utils.PostgreSQL;
+import hu.jgj52.hutiersbot.Buttons.*;
+import hu.jgj52.hutiersbot.Commands.*;
+import hu.jgj52.hutiersbot.Listeners.*;
+import hu.jgj52.hutiersbot.Types.*;
+import hu.jgj52.hutiersbot.Utils.*;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -19,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Main {
-    public static List<SlashCommand> commands = new ArrayList<>();
+    public static List<Command> commands = new ArrayList<>();
     public static List<Button> buttons = new ArrayList<>();
     public static PostgreSQL postgres;
 
@@ -37,13 +35,13 @@ public class Main {
         builder.addEventListeners(new ButtonListener());
         JDA jda = builder.build();
 
-        buttons.add(new CicaButton());
+        buttons.add(new StopNameUpdatingButton());
 
-        commands.add(new CicaSlashCommand());
+        commands.add(new UpdateNamesCommand());
 
         CommandListUpdateAction jdaCommands = jda.updateCommands();
         List<SlashCommandData> cmds = new ArrayList<>();
-        for (SlashCommand cmd : commands) cmds.add(cmd.command());
+        for (Command cmd : commands) cmds.add(cmd.command());
         jdaCommands.addCommands(cmds);
         jdaCommands.queue();
     }

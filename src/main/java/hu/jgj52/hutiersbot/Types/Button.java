@@ -1,6 +1,5 @@
 package hu.jgj52.hutiersbot.Types;
 
-import hu.jgj52.hutiersbot.Main;
 import net.dv8tion.jda.api.components.buttons.ButtonStyle;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 
