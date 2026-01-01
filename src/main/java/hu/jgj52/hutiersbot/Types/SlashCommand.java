@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 
-public abstract class Command {
+public abstract class SlashCommand {
     public abstract String getName();
     public abstract String getDescription();
     protected void addOptions(SlashCommandData command) {}
