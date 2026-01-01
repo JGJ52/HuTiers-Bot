@@ -3,6 +3,7 @@ package hu.jgj52.hutiersbot;
 import hu.jgj52.hutiersbot.Buttons.*;
 import hu.jgj52.hutiersbot.Commands.*;
 import hu.jgj52.hutiersbot.Listeners.*;
+import hu.jgj52.hutiersbot.Modals.*;
 import hu.jgj52.hutiersbot.SelectMenus.*;
 import hu.jgj52.hutiersbot.Types.*;
 import hu.jgj52.hutiersbot.Utils.*;
@@ -19,6 +20,7 @@ public class Main {
     public static List<Command> commands = new ArrayList<>();
     public static List<Button> buttons = new ArrayList<>();
     public static List<SelectMenu> selectmenus = new ArrayList<>();
+    public static List<Modal> modals = new ArrayList<>();
     public static PostgreSQL postgres;
     public static Guild guild;
     public static Long testCooldown;
@@ -38,6 +40,7 @@ public class Main {
         builder.addEventListeners(new CommandListener());
         builder.addEventListeners(new ButtonListener());
         builder.addEventListeners(new SelectMenuListener());
+        builder.addEventListeners(new ModalListener());
         builder.addEventListeners(new ReadyListener());
         builder.build();
 
@@ -47,5 +50,7 @@ public class Main {
         commands.add(new RequestTestCommand());
 
         selectmenus.add(new RequestTestSelectMenu());
+
+        //modals.add();
     }
 }

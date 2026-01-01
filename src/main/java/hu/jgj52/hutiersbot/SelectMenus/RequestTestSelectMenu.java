@@ -43,7 +43,6 @@ public class RequestTestSelectMenu extends SelectMenu {
 
     @Override
     public void execute(StringSelectInteractionEvent event) {
-        if (!event.getMember().hasPermission(Permission.ADMINISTRATOR)) return;
         Gson gson = new Gson();
         try {
             PostgreSQL.QueryResult result = Main.postgres.from("gamemodes").eq("id", Integer.parseInt(event.getValues().getFirst())).execute().get();
